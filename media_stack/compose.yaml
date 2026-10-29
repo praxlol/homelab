@@ -1,0 +1,178 @@
+name: media_stack
+
+# -----------------------------------------------------------------------------
+# Reusable blocks (YAML anchors)
+# WHY: the original repeated the same environment, restart and network lines in
+# every service. An anchor (&name) defines a block once, and an alias (*name)
+# or merge key (<<: *name) reuses it. Fewer copies means fewer chances for the
+# services to drift apart when you edit one and forget another.
+# Keys starting with "x-" are ignored by Compose, so they are safe scratch space.
+# -----------------------------------------------------------------------------
+
+x-common-env: &common-env
+  PUID: ${PUID:?set PUID in .env}
+  PGID: ${PGID:?set PGID in .env}
+  TZ: ${TZ:?set TZ in .env}
+
+x-service-defaults: &service-defaults
+  restart: unless-stopped
+  security_opt:
+    - no-new-privileges:true
+  logging:
+    driver: json-file
+    options:
+      max-size: "10m"
+      max-file: "3"
+
+x-usb-hdd: &usb-hdd
+  type: bind
+  source: ${HDD_MNT:?set HDD_MNT in .env}/Media
+  target: /data/media/usb_hdd
+  bind:
+    create_host_path: false
+
+# The USB hard drive, defined once and mounted the same way in every app.
+# WHY (long syntax): the short form "- /host:/container" silently CREATES the
+# host folder if it doesn't exist. If the USB drive isn't mounted at boot, the
+# apps would start anyway and write into an empty folder on the system disk.
+# With create_host_path: false the container refuses to start instead, which
+# is the failure you want.
+# WHY (same path everywhere): the original gave Radarr no HDD mount at all, and
+# Jellyfin saw a different layout from the others. If two apps disagree about
+# where a file lives, imports and subtitle writes fail with "file not found".
+
+
+
+services:
+  jellyfin:
+    image: jellyfin/jellyfin
+    container_name: jellyfin
+    hostname: jellyfin
+    <<: *service-defaults
+    environment: *common-env
+    volumes:
+      - ${APPDATA:?set APPDATA in .env}/jellyfin/config:/config
+      - ${APPDATA}/jellyfin/cache:/cache
+      - ${MEDIA_SHARE1:?set MEDIA_SHARE1 in .env}/data/media:/data/media
+      - *usb-hdd
+    ports:
+      - 8096:8096
+#    devices:
+#      - /dev/dri:/dev/dri #Required for jellyfin HW transcoding / QuickSync
+    networks:
+      - starr
+
+  sonarr:
+    image: linuxserver/sonarr
+    container_name: sonarr
+    hostname: sonarr
+    <<: *service-defaults
+    environment: *common-env
+    volumes:
+      - ${APPDATA:?set APPDATA in .env}/sonarr/config:/config
+      - ${MEDIA_SHARE1:?set MEDIA_SHARE1 in .env}/data:/data
+      - *usb-hdd
+    ports:
+      - 8989:8989  
+    networks:
+      - starr
+      - qbit
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://localhost:8989/ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 90s
+
+
+
+  radarr:
+    image: linuxserver/radarr
+    container_name: radarr
+    hostname: radarr
+    <<: *service-defaults
+    environment: *common-env
+    volumes:
+      - ${APPDATA:?set APPDATA in .env}/radarr/config:/config
+      - ${MEDIA_SHARE1:?set MEDIA_SHARE1 in .env}/data:/data
+      - *usb-hdd
+    ports:
+      - 7878:7878
+    networks:
+      - starr
+      - qbit
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://localhost:7878/ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 90s
+
+    
+  bazarr:
+    image: linuxserver/bazarr
+    container_name: bazarr
+    hostname: bazarr
+    <<: *service-defaults
+    environment: *common-env
+    volumes:
+      - ${APPDATA:?set APPDATA in .env}/bazarr/config:/config
+      - ${MEDIA_SHARE1:?set MEDIA_SHARE1 in .env}/data:/data
+      - *usb-hdd
+    ports:
+      - 6767:6767
+    networks:
+      - starr
+
+  seerr:
+    image: ghcr.io/seerr-team/seerr:latest
+    init: true
+    container_name: seerr
+    hostname: seerr
+    <<: *service-defaults
+    environment:
+      LOG_LEVEL: info
+      TZ: ${TZ:?set TZ in .env}
+    ports:
+      - "5055:5055"
+    volumes:
+      - ${APPDATA:?set APPDATA in .env}/seerr/config:/app/config
+    healthcheck:
+      test: ["CMD-SHELL", "wget --no-verbose --tries=1 --spider http://localhost:5055/api/v1/status || exit 1"]
+      start_period: 20s
+      timeout: 3s
+      interval: 15s
+      retries: 3
+    depends_on:
+      radarr:
+        condition: service_healthy
+      sonarr:
+        condition: service_healthy
+    networks:
+      - starr
+
+  profilarr:
+    image: santiagosayshey/profilarr:latest
+    container_name: profilarr
+    hostname: profilarr
+    <<: *service-defaults
+    environment: *common-env
+    ports:
+      - 6868:6868
+    volumes:
+      - ${APPDATA:?set APPDATA in .env}/profilarr/config:/config
+    depends_on:
+      radarr:
+        condition: service_healthy
+      sonarr:
+        condition: service_healthy
+    networks:
+      - starr
+
+networks:
+  starr:
+    external: true
+  qbit:
+    external: true
+  admin:
+    external: true
