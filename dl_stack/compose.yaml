@@ -1,0 +1,102 @@
+name: dl_stack
+
+x-common-env: &common-env
+  PUID: ${PUID:?set PUID in .env}
+  PGID: ${PGID:?set PGID in .env}
+  TZ: ${TZ:?set TZ in .env}
+
+x-service-defaults: &service-defaults
+  restart: unless-stopped
+  security_opt:
+    - no-new-privileges:true
+  logging:
+    driver: json-file
+    options:
+      max-size: "10m"
+      max-file: "3"
+
+services:
+  prowlarr:
+    image: lscr.io/linuxserver/prowlarr:latest
+    container_name: prowlarr
+    hostname: prowlarr
+    <<: *service-defaults
+    environment: *common-env
+    volumes:
+      - ${APPDATA:?set APPDATA in .env}/prowlarr/config:/config
+    ports:
+      - 9696:9696
+    networks:
+      - starr
+      - qbit
+      
+  qbittorrent:
+    image: lscr.io/linuxserver/qbittorrent:5.1.0
+    container_name: qbittorrent
+    hostname: qbittorrent
+    <<: *service-defaults
+    environment:
+      <<: *common-env
+      WEBUI_PORT: "8080"
+      TORRENTING_PORT: "6881"
+    volumes:
+      - ${APPDATA:?set APPDATA in .env}/qbittorrent/config:/config
+      - ${MEDIA_SHARE1:?set MEDIA_SHARE1 in .env}/data/torrents:/data/torrents
+    ports:
+      - 8080:8080
+      - 6881:6881
+      - 6881:6881/udp
+    networks:
+        - qbit
+        
+  sabnzbd:
+    image: lscr.io/linuxserver/sabnzbd:latest
+    container_name: sabnzbd
+    hostname: sabnzbd
+    <<: *service-defaults
+    environment: *common-env
+    volumes:
+      - ${APPDATA:?set APPDATA in .env}/sabnzbd/config:/config
+      - ${MEDIA_SHARE1:?set MEDIA_SHARE1 in .env}/data/usenet:/data/usenet
+    ports:
+      - 8081:8080
+    networks:
+        - qbit
+
+  qui:
+    image: ghcr.io/autobrr/qui:latest
+    container_name: qui
+    <<: *service-defaults    
+    ports:
+      - 7476:7476
+    volumes:
+      - ${APPDATA:?set APPDATA in .env}/qui/config:/config
+      - ${MEDIA_SHARE1:?set MEDIA_SHARE1 in .env}/data/torrents:/data/torrents
+    depends_on:
+      - qbittorrent
+    networks:
+      - qbit
+
+  flaresolverr:
+    # DockerHub mirror flaresolverr/flaresolverr:latest
+    image: alexfozor/flaresolverr:pr-1300
+    container_name: flaresolverr
+    hostname: flaresolverr
+    <<: *service-defaults
+    environment:
+      - LOG_LEVEL=${LOG_LEVEL:-info}
+      - LOG_HTML=${LOG_HTML:-false}
+      - CAPTCHA_SOLVER=${CAPTCHA_SOLVER:-none}
+      - TZ=${TZ:?set TZ in .env}
+    ports:
+      - "${PORT:-8191}:8191"
+    networks:
+      - starr
+
+networks:
+  starr:
+    external: true
+  qbit:
+    external: true
+  admin:
+    external: true
