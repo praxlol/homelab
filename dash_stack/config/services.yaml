@@ -167,9 +167,3 @@
         description: Uptime monitoring
         icon: uptime-kuma.png
         siteMonitor: http://10.1.1.170:3001
-
-- Other:
-    - Obsidian:
-        href: http://localhost/
-        description: Personal knowledge management
-        icon: obsidian.png
