@@ -1,0 +1,59 @@
+http:
+  routers:
+    jellyfin:
+      rule: "Host(`jellyfin.home.praxplace.com`)"
+      service: jellyfin
+    jellyfin-public-name:
+      rule: "Host(`jelly.praxplace.com`)"
+      service: jellyfin
+      tls:
+        certResolver: cloudflare
+        domains:
+          - main: jelly.praxplace.com
+    seerr:
+      rule: "Host(`seerr.home.praxplace.com`)"
+      service: seerr
+    sonarr:
+      rule: "Host(`sonarr.home.praxplace.com`)"
+      service: sonarr
+    radarr:
+      rule: "Host(`radarr.home.praxplace.com`)"
+      service: radarr
+    bazarr:
+      rule: "Host(`bazarr.home.praxplace.com`)"
+      service: bazarr
+    prowlarr:
+      rule: "Host(`prowlarr.home.praxplace.com`)"
+      service: prowlarr
+    qbittorrent:
+      rule: "Host(`qbit.home.praxplace.com`)"
+      service: qbittorrent
+    sabnzbd:
+      rule: "Host(`sabnzbd.home.praxplace.com`)"
+      service: sabnzbd
+
+  services:
+    jellyfin:
+      loadBalancer:
+        servers: [{ url: "http://jellyfin:8096" }]
+    seerr:
+      loadBalancer:
+        servers: [{ url: "http://seerr:5055" }]
+    sonarr:
+      loadBalancer:
+        servers: [{ url: "http://sonarr:8989" }]
+    radarr:
+      loadBalancer:
+        servers: [{ url: "http://radarr:7878" }]
+    bazarr:
+      loadBalancer:
+        servers: [{ url: "http://bazarr:6767" }]
+    prowlarr:
+      loadBalancer:
+        servers: [{ url: "http://prowlarr:9696" }]
+    qbittorrent:
+      loadBalancer:
+        servers: [{ url: "http://qbittorrent:8080" }]
+    sabnzbd:
+      loadBalancer:
+        servers: [{ url: "http://sabnzbd:8080" }]
