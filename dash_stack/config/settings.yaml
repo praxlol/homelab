@@ -11,7 +11,7 @@ layout:
     columns: 4
   Media:
     style: row
-    columns: 3
+    columns: 2
     Apps:
       style: row
       columns: 2
