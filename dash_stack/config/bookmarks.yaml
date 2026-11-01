@@ -1,1 +1,38 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/configs/bookmarks
+
+# - Section:
+#     - bookmark_name:
+#         - abbr: 2_letter_abbreviation
+#           href: insert_link_here
+
+- Useful Homelab Links:
+    - Security:
+        - abbr: SE
+          href: https://github.com/imthenachoman/How-To-Secure-A-Linux-Server?tab=readme-ov-file#the-ssh-server 
+          icon: 1password.png
+    - Icons:
+        - abbr: IC
+          href: https://selfh.st/icons/ 
+          icon: https://cdn.jsdelivr.net/gh/selfhst/icons@main/png/selfh-st.png
+    - Router:
+        - abbr: RO
+          href: http://10.1.1.1
+          icon: router.png
+    - Github:
+        - abbr: GIT
+          href: https://github.com/praxlol?tab=repositories
+          icon: github.png
+
+- Management:
+    - Homepage Setup:
+        - abbr: HM
+          href: https://gethomepage.dev/configs/settings/ 
+          icon: homepage.png
+    - Komodo Local:
+        - abbr: KO
+          href: http://10.1.1.101:9120/ 
+          icon: komodo.png
+
 
