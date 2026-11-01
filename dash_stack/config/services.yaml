@@ -26,6 +26,11 @@
         description: Local DNS
         icon: adguard-home.png
         ping: 10.1.1.104
+        widget:
+          type: adguard
+          url: http://10.1.1.104
+          username: "{{HOMEPAGE_VAR_ADGUARD_USER}}"
+          password: "{{HOMEPAGE_VAR_ADGUARD_PASS}}"
     - Router:
         href: http://10.1.1.1
         description: Router McRouterFace
