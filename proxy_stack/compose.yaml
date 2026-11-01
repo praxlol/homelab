@@ -1,0 +1,28 @@
+name: proxy_stack
+
+services:
+  traefik:
+    image: traefik:v3
+    container_name: traefik
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    environment:
+      CF_DNS_API_TOKEN: ${CF_DNS_API_TOKEN:?set CF_DNS_API_TOKEN in .env}
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - ./traefik.yml:/etc/traefik/traefik.yml:ro
+      - ./dynamic:/etc/traefik/dynamic:ro
+      - ${APPDATA:?set APPDATA in .env}/traefik/acme:/acme
+    networks:
+      starr:
+        ipv4_address: 172.19.0.250   # CHANGE to an address in your starr subnet
+      qbit: {}
+
+networks:
+  starr:
+    external: true
+  qbit:
+    external: true
