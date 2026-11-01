@@ -26,11 +26,12 @@
           icon: github.png
 
 - Usenet:
-    - Usenet Links:
-        - abbr: NZBGeek
+    - NZBGeek:
+        - abbr: NG
           href: https://nzbgeek.info/dashboard.php
           icon: nzb.png
-        - abbr: Frugal Usenet
+    - Frugal Usenet:
+        - abbr: FU
           href: https://billing.frugalusenet.com/member
           icon: nzb.png
           
