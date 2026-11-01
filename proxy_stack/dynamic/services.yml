@@ -31,7 +31,7 @@ http:
     sabnzbd:
       rule: "Host(`sabnzbd.home.praxplace.com`)"
       service: sabnzbd
-        homepage:
+    homepage:
       rule: "Host(`home.praxplace.com`)"
       service: homepage
     profilarr:
@@ -69,7 +69,7 @@ http:
     sabnzbd:
       loadBalancer:
         servers: [{ url: "http://sabnzbd:8080" }]
-        homepage:
+    homepage:
       loadBalancer:
         servers: [{ url: "http://homepage:3000" }]
     profilarr:
