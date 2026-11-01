@@ -1,1 +1,6 @@
-
+config/logs/
+config/docker.yaml
+config/kubernetes.yaml
+config/proxmox.yaml
+config/custom.css
+config/custom.js
