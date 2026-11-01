@@ -1,0 +1,36 @@
+entryPoints:
+  web:
+    address: ":80"
+    http:
+      redirections:
+        entryPoint:
+          to: websecure
+          scheme: https
+  websecure:
+    address: ":443"
+    http:
+      tls:
+        certResolver: cloudflare
+        domains:
+          - main: home.praxplace.com
+            sans:
+              - "*.home.praxplace.com"
+
+certificatesResolvers:
+  cloudflare:
+    acme:
+      email: pascale103@gmail.com        # CHANGE
+      storage: /acme/acme.json
+      dnsChallenge:
+        provider: cloudflare
+        resolvers:
+          - "1.1.1.1:104"
+          - "1.0.0.1:104"
+
+providers:
+  file:
+    directory: /etc/traefik/dynamic
+    watch: true
+
+log:
+  level: INFO
