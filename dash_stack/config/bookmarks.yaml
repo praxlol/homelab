@@ -25,6 +25,15 @@
           href: https://github.com/praxlol?tab=repositories
           icon: github.png
 
+- Usenet:
+    - Usenet Links:
+        - abbr: NZBGeek
+          href: https://nzbgeek.info/dashboard.php
+          icon: nzb.png
+        - abbr: Frugal Usenet
+          href: https://billing.frugalusenet.com/member
+          icon: nzb.png
+          
 - Management:
     - Homepage Setup:
         - abbr: HM
