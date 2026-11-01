@@ -1,1 +1,169 @@
+---
+- Homelab:
+    - Proxmox:
+        href: https://10.1.1.150:8006/
+        description: Heart of the home(lab)
+        icon: proxmox.png
+        widget:
+          type: proxmox
+          url: https://10.1.1.150:8006
+          username: "{{HOMEPAGE_VAR_PROXMOX_TOKEN_ID}}"
+          password: "{{HOMEPAGE_VAR_PROXMOX_TOKEN_SECRET}}"
+    - Komodo:
+        href: http://10.1.1.101:9120/
+        description: Docker management
+        icon: komodo.png
+        siteMonitor: http://10.1.1.101:9120
+        widget:
+          type: komodo
+          url: http://10.1.1.101:9120
+          key: "{{HOMEPAGE_VAR_KOMODO_KEY}}"
+          secret: "{{HOMEPAGE_VAR_KOMODO_SECRET}}"
+          showSummary: true
+          showStack: true
+    - AdGuard Home:
+        href: http://10.1.1.104
+        description: Local DNS
+        icon: adguard-home.png
+        ping: 10.1.1.104
+    - Router:
+        href: http://10.1.1.1
+        description: Router McRouterFace
+        icon: router.png
+        ping: 10.1.1.1
 
+- Media:
+    - Apps:
+        - Seerr:
+            href: https://seerr.home.praxplace.com
+            description: Media requests
+            icon: seerr.png
+            siteMonitor: http://seerr:5055
+            widget:
+              type: jellyseerr
+              url: http://seerr:5055
+              key: "{{HOMEPAGE_VAR_SEERR_KEY}}"
+        - Jellyfin:
+            href: https://jellyfin.home.praxplace.com
+            description: Media streaming
+            icon: jellyfin.png
+            siteMonitor: http://jellyfin:8096
+            widget:
+              type: jellyfin
+              url: http://jellyfin:8096
+              key: "{{HOMEPAGE_VAR_JELLYFIN_KEY}}"
+              enableBlocks: true
+              enableNowPlaying: true
+              enableUser: true
+              enableMediaControl: false
+              showEpisodeNumber: true
+              expandOneStreamToTwoRows: false
+        - Radarr:
+            href: https://radarr.home.praxplace.com
+            description: Movie sourcing
+            icon: radarr.png
+            siteMonitor: http://radarr:7878
+            widget:
+              type: radarr
+              url: http://radarr:7878
+              key: "{{HOMEPAGE_VAR_RADARR_KEY}}"
+              enableQueue: true
+        - Sonarr:
+            href: https://sonarr.home.praxplace.com
+            description: Series sourcing
+            icon: sonarr.png
+            siteMonitor: http://sonarr:8989
+            widget:
+              type: sonarr
+              url: http://sonarr:8989
+              key: "{{HOMEPAGE_VAR_SONARR_KEY}}"
+        - Bazarr:
+            href: https://bazarr.home.praxplace.com
+            description: Subtitle sourcing
+            icon: bazarr.png
+            siteMonitor: http://bazarr:6767
+            widget:
+              type: bazarr
+              url: http://bazarr:6767
+              key: "{{HOMEPAGE_VAR_BAZARR_KEY}}"
+        - Profilarr:
+            href: https://profilarr.home.praxplace.com
+            description: Media profile management for Radarr & Sonarr
+            icon: profilarr.png
+            siteMonitor: http://profilarr:6868
+    - Calender:
+        - Calender:
+            widget:
+              type: calendar
+              firstDayInWeek: monday
+              view: monthly
+              maxEvents: 10
+              showTime: true
+              timezone: Africa/Johannesburg
+              integrations:
+                - type: sonarr
+                  service_group: Apps
+                  service_name: Sonarr
+                  color: teal
+                  baseUrl: https://sonarr.home.praxplace.com
+                  params:
+                    unmonitored: true
+                - type: radarr
+                  service_group: Apps
+                  service_name: Radarr
+                  baseUrl: https://radarr.home.praxplace.com
+                  params:
+                    unmonitored: true
+
+- Download:
+    - Prowlarr:
+        href: https://prowlarr.home.praxplace.com
+        description: Indexer management
+        icon: prowlarr.png
+        siteMonitor: http://prowlarr:9696
+        widget:
+          type: prowlarr
+          url: http://prowlarr:9696
+          key: "{{HOMEPAGE_VAR_PROWLARR_KEY}}"
+    - qBittorrent:
+        href: https://qbit.home.praxplace.com
+        description: Torrent downloader
+        icon: qbittorrent.png
+        siteMonitor: http://qbittorrent:8080
+        widget:
+          type: qbittorrent
+          url: http://qbittorrent:8080
+          username: "{{HOMEPAGE_VAR_QBIT_USER}}"
+          password: "{{HOMEPAGE_VAR_QBIT_PASS}}"
+    - SABnzbd:
+        href: https://sabnzbd.home.praxplace.com
+        description: Usenet downloader
+        icon: sabnzbd.png
+        siteMonitor: http://sabnzbd:8080
+        widget:
+          type: sabnzbd
+          url: http://sabnzbd:8080
+          key: "{{HOMEPAGE_VAR_SABNZBD_KEY}}"
+    - Qui:
+        href: https://qui.home.praxplace.com
+        description: qBittorrent frontend and automation
+        icon: qui.png
+        siteMonitor: http://qui:7476
+    - FlareSolverr:
+        href: http://10.1.1.170:8191
+        description: Captcha solver
+        icon: flaresolverr.png
+        siteMonitor: http://flaresolverr:8191
+
+- Monitoring:
+    - Uptime Kuma:
+        href: https://uptime.home.praxplace.com
+        description: Uptime monitoring
+        icon: uptime-kuma.png
+        siteMonitor: http://10.1.1.170:3001
+
+- Other:
+    - Obsidian:
+        href: http://localhost/
+        description: Personal knowledge management
+        icon: obsidian.png
