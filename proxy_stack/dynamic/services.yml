@@ -31,6 +31,18 @@ http:
     sabnzbd:
       rule: "Host(`sabnzbd.home.praxplace.com`)"
       service: sabnzbd
+        homepage:
+      rule: "Host(`home.praxplace.com`)"
+      service: homepage
+    profilarr:
+      rule: "Host(`profilarr.home.praxplace.com`)"
+      service: profilarr
+    qui:
+      rule: "Host(`qui.home.praxplace.com`)"
+      service: qui
+    uptime:
+      rule: "Host(`uptime.home.praxplace.com`)"
+      service: uptime
 
   services:
     jellyfin:
@@ -57,3 +69,15 @@ http:
     sabnzbd:
       loadBalancer:
         servers: [{ url: "http://sabnzbd:8080" }]
+        homepage:
+      loadBalancer:
+        servers: [{ url: "http://homepage:3000" }]
+    profilarr:
+      loadBalancer:
+        servers: [{ url: "http://profilarr:6868" }]
+    qui:
+      loadBalancer:
+        servers: [{ url: "http://qui:7476" }]
+    uptime:
+      loadBalancer:
+        servers: [{ url: "http://10.1.1.170:3001" }]
