@@ -1,1 +1,17 @@
-
+---
+- greeting:
+    text_size: xl
+    text: Welcome back
+- resources:
+    cpu: true
+    memory: true
+    disk: /
+    uptime: true
+    units: metric
+- datetime:
+    format:
+      dateStyle: long
+      timeStyle: short
+- search:
+    provider: google
+    target: _blank
