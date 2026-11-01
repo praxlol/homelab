@@ -1,0 +1,24 @@
+name: dash_stack
+
+services:
+  homepage:
+    image: ghcr.io/gethomepage/homepage:latest
+    container_name: homepage
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    env_file:
+      - .env
+    environment:
+      HOMEPAGE_ALLOWED_HOSTS: home.praxplace.com
+    volumes:
+      - ./config:/app/config
+    networks:
+      - starr
+      - qbit
+
+networks:
+  starr:
+    external: true
+  qbit:
+    external: true
