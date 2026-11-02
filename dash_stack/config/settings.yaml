@@ -9,7 +9,6 @@ layout:
   Homelab:
     style: row
     columns: 4
-		useEqualHeights: true
   Media:
     style: row
     columns: 2
