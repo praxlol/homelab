@@ -43,6 +43,9 @@ http:
     uptime:
       rule: "Host(`uptime.home.praxplace.com`)"
       service: uptime
+    syncthing:
+      rule: "Host(`syncthing.home.praxplace.com`)"
+      service: syncthing
 
   services:
     jellyfin:
@@ -81,3 +84,6 @@ http:
     uptime:
       loadBalancer:
         servers: [{ url: "http://10.1.1.170:3001" }]
+    syncthing:
+      loadBalancer:
+        servers: [{ url: "http://10.1.1.105:8384" }]
