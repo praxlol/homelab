@@ -167,3 +167,15 @@
         description: Uptime monitoring
         icon: uptime-kuma.png
         siteMonitor: http://10.1.1.170:3001
+
+- Backups:
+    - Syncthing (server):
+        href: https://syncthing.home.praxplace.com
+        description: Sends Proxmox backups to the PC
+        icon: syncthing.png
+        ping: 10.1.1.105
+    - Syncthing (PC):
+        href: http://127.0.0.1:8384
+        description: Receives backups (opens on the PC only)
+        icon: syncthing.png
+        ping: <pc-ip>          # CHANGE to the PC's reserved IP
