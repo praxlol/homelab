@@ -160,14 +160,19 @@
         description: Captcha solver
         icon: flaresolverr.png
         siteMonitor: http://flaresolverr:8191
-
+        
 - Monitoring:
     - Uptime Kuma:
         href: https://uptime.home.praxplace.com
         description: Uptime monitoring
         icon: uptime-kuma.png
-        siteMonitor: http://10.1.1.170:3001
-
+        siteMonitor: http://10.1.1.106:3001
+    - Dozzle:
+        href: https://dozzle.home.praxplace.com
+        description: Container logs
+        icon: dozzle.png
+        siteMonitor: http://10.1.1.106:8080
+        
 - Backups:
     - Syncthing (server):
         href: https://syncthing.home.praxplace.com
