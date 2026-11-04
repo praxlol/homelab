@@ -1,0 +1,14 @@
+name: dozzle_agent
+
+services:
+  dozzle-agent:
+    image: amir20/dozzle:latest
+    command: agent
+    container_name: dozzle-agent
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    ports:
+      - 7007:7007
