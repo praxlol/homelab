@@ -8,6 +8,7 @@
     disk: /
     uptime: true
     units: metric
+- resources:
     label: Media drives
     expanded: true
     disk:
