@@ -46,6 +46,9 @@ http:
     syncthing:
       rule: "Host(`syncthing.home.praxplace.com`)"
       service: syncthing
+    dozzle:
+      rule: "Host(`dozzle.home.praxplace.com`)"
+      service: dozzle
 
   services:
     jellyfin:
@@ -81,9 +84,12 @@ http:
     qui:
       loadBalancer:
         servers: [{ url: "http://qui:7476" }]
-    uptime:
-      loadBalancer:
-        servers: [{ url: "http://10.1.1.170:3001" }]
     syncthing:
       loadBalancer:
         servers: [{ url: "http://10.1.1.105:8384" }]
+    uptime:
+      loadBalancer:
+        servers: [{ url: "http://10.1.1.106:3001" }]
+    dozzle:
+      loadBalancer:
+        servers: [{ url: "http://10.1.1.106:8080" }]
