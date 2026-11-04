@@ -131,16 +131,21 @@
           type: prowlarr
           url: http://prowlarr:9696
           key: "{{HOMEPAGE_VAR_PROWLARR_KEY}}"
-    - qBittorrent:
-        href: https://qbit.home.praxplace.com
-        description: Torrent downloader
-        icon: qbittorrent.png
-        siteMonitor: http://qbittorrent:8080
+    - Qui:
+        href: https://qui.home.praxplace.com
+        description: qBittorrent frontend and automation
+        icon: qui.png
+        siteMonitor: http://qui:7476
         widget:
           type: qbittorrent
           url: http://qbittorrent:8080
           username: "{{HOMEPAGE_VAR_QBIT_USER}}"
           password: "{{HOMEPAGE_VAR_QBIT_PASS}}"
+    - qBittorrent:
+        href: https://qbit.home.praxplace.com
+        description: Torrent downloader
+        icon: qbittorrent.png
+        siteMonitor: http://qbittorrent:8080
     - SABnzbd:
         href: https://sabnzbd.home.praxplace.com
         description: Usenet downloader
@@ -150,11 +155,6 @@
           type: sabnzbd
           url: http://sabnzbd:8080
           key: "{{HOMEPAGE_VAR_SABNZBD_KEY}}"
-    - Qui:
-        href: https://qui.home.praxplace.com
-        description: qBittorrent frontend and automation
-        icon: qui.png
-        siteMonitor: http://qui:7476
     - FlareSolverr:
         href: http://10.1.1.170:8191
         description: Captcha solver
