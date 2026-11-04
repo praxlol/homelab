@@ -1,0 +1,33 @@
+name: monitoring_stack
+
+services:
+  uptime-kuma:
+    image: louislam/uptime-kuma:2
+    container_name: uptime-kuma
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    dns:
+      - 1.1.1.1
+      - 1.0.0.1
+    extra_hosts:
+      - "home.praxplace.com:10.1.1.170"
+    volumes:
+      - ${APPDATA:?set APPDATA in .env}/uptime-kuma/data:/app/data
+    ports:
+      - 3001:3001
+
+  dozzle:
+    image: amir20/dozzle:latest
+    container_name: dozzle
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    environment:
+      DOZZLE_REMOTE_AGENT: 10.1.1.170:7007
+      DOZZLE_AUTH_PROVIDER: simple
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ${APPDATA}/dozzle:/data
+    ports:
+      - 8080:8080
