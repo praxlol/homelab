@@ -13,6 +13,8 @@ services:
       HOMEPAGE_ALLOWED_HOSTS: home.praxplace.com
     volumes:
       - ./config:/app/config
+      - /mnt/media_hdd1_node:/mnt/media:ro
+      - ${HDD_MNT:?set HDD_MNT in .env}:/mnt/usb:ro
     networks:
       - starr
       - qbit
