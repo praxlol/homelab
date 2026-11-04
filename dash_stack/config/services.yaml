@@ -122,15 +122,15 @@
                     unmonitored: true
 
 - Download:
-    - Prowlarr:
-        href: https://prowlarr.home.praxplace.com
-        description: Indexer management
-        icon: prowlarr.png
-        siteMonitor: http://prowlarr:9696
+    - SABnzbd:
+        href: https://sabnzbd.home.praxplace.com
+        description: Usenet downloader
+        icon: sabnzbd.png
+        siteMonitor: http://sabnzbd:8080
         widget:
-          type: prowlarr
-          url: http://prowlarr:9696
-          key: "{{HOMEPAGE_VAR_PROWLARR_KEY}}"
+          type: sabnzbd
+          url: http://sabnzbd:8080
+          key: "{{HOMEPAGE_VAR_SABNZBD_KEY}}"
     - Qui:
         href: https://qui.home.praxplace.com
         description: qBittorrent frontend and automation
@@ -146,15 +146,15 @@
         description: Torrent downloader
         icon: qbittorrent.png
         siteMonitor: http://qbittorrent:8080
-    - SABnzbd:
-        href: https://sabnzbd.home.praxplace.com
-        description: Usenet downloader
-        icon: sabnzbd.png
-        siteMonitor: http://sabnzbd:8080
+    - Prowlarr:
+        href: https://prowlarr.home.praxplace.com
+        description: Indexer management
+        icon: prowlarr.png
+        siteMonitor: http://prowlarr:9696
         widget:
-          type: sabnzbd
-          url: http://sabnzbd:8080
-          key: "{{HOMEPAGE_VAR_SABNZBD_KEY}}"
+          type: prowlarr
+          url: http://prowlarr:9696
+          key: "{{HOMEPAGE_VAR_PROWLARR_KEY}}"
     - FlareSolverr:
         href: http://10.1.1.170:8191
         description: Captcha solver
