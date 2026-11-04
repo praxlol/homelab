@@ -182,4 +182,8 @@
         href: http://127.0.0.1:8384
         description: Receives backups (opens on the PC only)
         icon: syncthing.png
-        ping: <pc-ip>          # CHANGE to the PC's reserved IP
+        ping: http://10.1.1.10:8384         # CHANGE to the PC's reserved IP
+        widget:
+          type: syncthing
+          url: http://10.1.1.10:8384
+          key: "{{HOMEPAGE_VAR_SYNCTHING_KEY_ARRAKIS}}"
