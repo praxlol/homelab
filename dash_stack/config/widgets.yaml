@@ -8,6 +8,11 @@
     disk: /
     uptime: true
     units: metric
+    label: Media drives
+    expanded: true
+    disk:
+      - /mnt/media
+      - /mnt/usb
 - datetime:
     format:
       dateStyle: long
