@@ -176,7 +176,7 @@
         ping: 10.1.1.105
         widget:
           type: syncthing
-          url: https://syncthing.home.praxplace.com
+          url: http://10.1.1.105:8384
           key: "{{HOMEPAGE_VAR_SYNCTHING_KEY}}"
     - Syncthing (PC):
         href: http://127.0.0.1:8384
