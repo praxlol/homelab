@@ -49,6 +49,9 @@ http:
     dozzle:
       rule: "Host(`dozzle.home.praxplace.com`)"
       service: dozzle
+    jellystat:
+      rule: "Host(`stats.home.praxplace.com`)"
+      service: jellystat
 
   services:
     jellyfin:
@@ -93,3 +96,6 @@ http:
     dozzle:
       loadBalancer:
         servers: [{ url: "http://10.1.1.106:8080" }]
+    jellystat:
+      loadBalancer:
+        servers: [{ url: "http://jellystat:3000" }]
