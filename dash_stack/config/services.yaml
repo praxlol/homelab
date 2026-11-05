@@ -39,15 +39,6 @@
 
 - Media:
     - Apps:
-        - Seerr:
-            href: https://seerr.home.praxplace.com
-            description: Media requests
-            icon: seerr.png
-            siteMonitor: http://seerr:5055
-            widget:
-              type: jellyseerr
-              url: http://seerr:5055
-              key: "{{HOMEPAGE_VAR_SEERR_KEY}}"
         - Jellyfin:
             href: https://jellyfin.home.praxplace.com
             description: Media streaming
@@ -64,6 +55,20 @@
               enableMediaControl: false
               showEpisodeNumber: true
               expandOneStreamToTwoRows: false
+        - Jellystat:
+            href: https://stats.home.praxplace.com
+            description: Jellyfin statistics
+            icon: jellystat.png
+            siteMonitor: http://jellystat:3000
+        - Seerr:
+            href: https://seerr.home.praxplace.com
+            description: Media requests
+            icon: seerr.png
+            siteMonitor: http://seerr:5055
+            widget:
+              type: jellyseerr
+              url: http://seerr:5055
+              key: "{{HOMEPAGE_VAR_SEERR_KEY}}"
         - Radarr:
             href: https://radarr.home.praxplace.com
             description: Movie sourcing
