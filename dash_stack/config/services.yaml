@@ -60,6 +60,11 @@
             description: Jellyfin statistics
             icon: jellystat.png
             siteMonitor: http://jellystat:3000
+            widget:
+              type: jellystat
+              url: http://jellystat:3000
+              key: "{{HOMEPAGE_VAR_JELLYSTAT_KEY}}"
+              days: 30 # optional, defaults to 30
         - Seerr:
             href: https://seerr.home.praxplace.com
             description: Media requests
