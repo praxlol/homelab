@@ -31,3 +31,32 @@ services:
       - ${APPDATA}/dozzle:/data
     ports:
       - 8080:8080
+      
+  beszel:
+    image: henrygd/beszel:latest
+    container_name: beszel
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    environment:
+      APP_URL: https://beszel.home.praxplace.com
+    volumes:
+      - ${APPDATA}/beszel/data:/beszel_data
+      - ${APPDATA}/beszel/socket:/beszel_socket
+    ports:
+      - 8090:8090
+
+  beszel-agent:
+    image: henrygd/beszel-agent:latest
+    container_name: beszel-agent
+    restart: unless-stopped
+    network_mode: host
+    volumes:
+      - ${APPDATA}/beszel/socket:/beszel_socket
+      - ${APPDATA}/beszel/agent-data:/var/lib/beszel-agent
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    environment:
+      LISTEN: /beszel_socket/beszel.sock
+      HUB_URL: http://localhost:8090
+      KEY: ${BESZEL_KEY}
+      TOKEN: ${BESZEL_LOCAL_TOKEN}
