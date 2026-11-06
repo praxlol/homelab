@@ -52,6 +52,9 @@ http:
     jellystat:
       rule: "Host(`stats.home.praxplace.com`)"
       service: jellystat
+    beszel:
+      rule: "Host(`beszel.home.praxplace.com`)"
+      service: beszel
 
   services:
     jellyfin:
@@ -99,3 +102,6 @@ http:
     jellystat:
       loadBalancer:
         servers: [{ url: "http://jellystat:3000" }]
+    beszel:
+      loadBalancer:
+        servers: [{ url: "http://10.1.1.106:8090" }]
