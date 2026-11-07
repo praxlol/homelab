@@ -182,6 +182,11 @@
         description: Container logs
         icon: dozzle.png
         siteMonitor: http://10.1.1.106:8080
+    - Beszel:
+        href: https://beszel.home.praxplace.com
+        description: Host and container metrics
+        icon: beszel.png
+        siteMonitor: http://10.1.1.106:8090
         
 - Backups:
     - Syncthing (server):
