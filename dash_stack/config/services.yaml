@@ -207,3 +207,10 @@
           type: syncthing
           url: http://10.1.1.10:8384
           key: "{{HOMEPAGE_VAR_SYNCTHING_KEY_ARRAKIS}}"
+          
+- Services:
+    - Actual Budget:
+        href: https://budget.home.praxplace.com
+        description: Finance Management
+        icon: actualbudget.png
+        siteMonitor: http://10.1.1.160:5006
