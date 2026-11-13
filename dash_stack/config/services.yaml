@@ -210,7 +210,7 @@
           
 - Services:
     - Actual Budget:
-        href: https://budget.home.praxplace.com
+        href: https://actualbudget.home.praxplace.com
         description: Finance Management
         icon: actualbudget.png
         siteMonitor: http://10.1.1.160:5006
