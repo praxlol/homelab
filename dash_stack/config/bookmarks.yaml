@@ -6,6 +6,29 @@
 #     - bookmark_name:
 #         - abbr: 2_letter_abbreviation
 #           href: insert_link_here
+- Management:
+    - Github Homelab Repo:
+        - abbr: GIT
+          href: https://github.com/praxlol/homelab
+          icon: github.png
+    - Github:
+        - abbr: GIT
+          href: https://github.com/praxlol?tab=repositories
+          icon: github.png
+    - Proxmox Community Scripts:
+        - abbr: CS
+          href: https://community-scripts.org/
+          icon: proxmox.png
+          
+- Usenet:
+    - NZBGeek:
+        - abbr: NG
+          href: https://nzbgeek.info/dashboard.php
+          icon: nzb.png
+    - Frugal Usenet:
+        - abbr: FU
+          href: https://billing.frugalusenet.com/member
+          icon: nzb.png
 
 - Useful Homelab Links:
     - Security:
@@ -16,33 +39,8 @@
         - abbr: IC
           href: https://selfh.st/icons/ 
           icon: https://cdn.jsdelivr.net/gh/selfhst/icons@main/png/selfh-st.png
-    - Router:
-        - abbr: RO
-          href: http://10.1.1.1
-          icon: router.png
-    - Github:
-        - abbr: GIT
-          href: https://github.com/praxlol?tab=repositories
-          icon: github.png
-
-- Usenet:
-    - NZBGeek:
-        - abbr: NG
-          href: https://nzbgeek.info/dashboard.php
-          icon: nzb.png
-    - Frugal Usenet:
-        - abbr: FU
-          href: https://billing.frugalusenet.com/member
-          icon: nzb.png
-          
-- Management:
     - Homepage Setup:
         - abbr: HM
           href: https://gethomepage.dev/configs/settings/ 
           icon: homepage.png
-    - Komodo Local:
-        - abbr: KO
-          href: http://10.1.1.101:9120/ 
-          icon: komodo.png
-
 
