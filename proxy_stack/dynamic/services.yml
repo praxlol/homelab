@@ -55,9 +55,9 @@ http:
     beszel:
       rule: "Host(`beszel.home.praxplace.com`)"
       service: beszel
-    budget:
-      rule: "Host(`budget.home.praxplace.com`)"
-      service: budget
+    actualbudget:
+      rule: "Host(`actualbudget.home.praxplace.com`)"
+      service: actualbudget
 
   services:
     jellyfin:
@@ -108,6 +108,6 @@ http:
     beszel:
       loadBalancer:
         servers: [{ url: "http://10.1.1.106:8090" }]
-    budget:
+    actualbudget:
       loadBalancer:
-        servers: [{ url: "https://10.1.1.160:5006" }]
+        servers: [{ url: "http://10.1.1.160:5006" }]
