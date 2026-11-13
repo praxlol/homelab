@@ -110,4 +110,4 @@ http:
         servers: [{ url: "http://10.1.1.106:8090" }]
     budget:
       loadBalancer:
-        servers: [{ url: "http://10.1.1.160:5006" }]
+        servers: [{ url: "https://10.1.1.160:5006" }]
