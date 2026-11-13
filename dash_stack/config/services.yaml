@@ -212,5 +212,5 @@
     - Actual Budget:
         href: https://actualbudget.home.praxplace.com
         description: Finance Management
-        icon: actualbudget.png
+        icon: actual-budget.png
         siteMonitor: http://10.1.1.160:5006
