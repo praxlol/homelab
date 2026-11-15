@@ -58,7 +58,10 @@ http:
     actualbudget:
       rule: "Host(`actualbudget.home.praxplace.com`)"
       service: actualbudget
-
+    sparkyfitness:
+      rule: "Host(`sparkyfitness.home.praxplace.com`)"
+      service: sparkyfitness
+      
   services:
     jellyfin:
       loadBalancer:
@@ -111,3 +114,6 @@ http:
     actualbudget:
       loadBalancer:
         servers: [{ url: "http://10.1.1.160:5006" }]
+    sparkyfitness:
+      loadBalancer:
+        servers: [{ url: "http://10.1.1.161" }]
