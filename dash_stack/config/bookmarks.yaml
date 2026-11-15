@@ -20,7 +20,7 @@
           href: https://community-scripts.org/
           icon: proxmox.png
           
-- Usenet:
+- Subscriptions:
     - NZBGeek:
         - abbr: NG
           href: https://nzbgeek.info/dashboard.php
@@ -29,7 +29,11 @@
         - abbr: FU
           href: https://billing.frugalusenet.com/member
           icon: nzb.png
-
+    - Open Subtitles:
+        - abbr: OS
+          href: https://www.opensubtitles.com/en/users/profile
+          icon: subtitles.png
+          
 - Useful Homelab Links:
     - Security:
         - abbr: SE
