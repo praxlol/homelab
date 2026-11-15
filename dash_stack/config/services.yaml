@@ -203,10 +203,6 @@
         description: Receives backups (opens on the PC only)
         icon: syncthing.png
         ping: http://10.1.1.10:8384         # CHANGE to the PC's reserved IP
-        widget:
-          type: syncthing
-          url: http://10.1.1.10:8384
-          key: "{{HOMEPAGE_VAR_SYNCTHING_KEY_ARRAKIS}}"
           
 - Services:
     - Actual Budget:
