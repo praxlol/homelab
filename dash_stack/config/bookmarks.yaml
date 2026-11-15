@@ -53,3 +53,7 @@
         - abbr: SU
           href: https://subdl.com/panel/api
           icon: sub.png
+    - Subsource:
+        - abbr: SU
+          href: https://subsource.net/dashboard/profile
+          icon: sub.png
