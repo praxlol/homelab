@@ -33,7 +33,10 @@
         - abbr: OS
           href: https://www.opensubtitles.com/en/users/profile
           icon: subtitles.png
-          
+    - Rackzar VPS:
+        - abbr: VPS
+          href: https://my.rackzar.com/clientarea.php?action=productdetails&id=6473
+          icon: vps.png          
 - Useful Homelab Links:
     - Security:
         - abbr: SE
