@@ -151,11 +151,6 @@
           url: http://qbittorrent:8080
           username: "{{HOMEPAGE_VAR_QBIT_USER}}"
           password: "{{HOMEPAGE_VAR_QBIT_PASS}}"
-    - qBittorrent:
-        href: https://qbit.home.praxplace.com
-        description: Torrent downloader
-        icon: qbittorrent.png
-        siteMonitor: http://qbittorrent:8080
     - Prowlarr:
         href: https://prowlarr.home.praxplace.com
         description: Indexer management
@@ -165,6 +160,11 @@
           type: prowlarr
           url: http://prowlarr:9696
           key: "{{HOMEPAGE_VAR_PROWLARR_KEY}}"
+    - qBittorrent:
+        href: https://qbit.home.praxplace.com
+        description: Torrent downloader
+        icon: qbittorrent.png
+        siteMonitor: http://qbittorrent:8080
     - FlareSolverr:
         href: http://10.1.1.170:8191
         description: Captcha solver
